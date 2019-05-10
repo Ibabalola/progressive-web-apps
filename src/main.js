@@ -1,3 +1,4 @@
+/** 
 import ServiceWorker from './sw';
 
 function init() {
@@ -17,3 +18,5 @@ function init() {
 }
 
 init();
+
+*/

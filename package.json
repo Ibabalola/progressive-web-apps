@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --config webpack.dev.js",
     "start": "http-server"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.4",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.2",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
