@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.dev.js",
-    "start": "http-server"
+    "start": "webpack-dev-server --mode development --config webpack.dev.js --open --hot --histroy-api-fallback"
   },
   "keywords": [],
   "author": "",

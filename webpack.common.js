@@ -24,7 +24,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Service Workers'
+            template: './src/index.html',
+            filename: './index.html'
         })
     ]
 };
