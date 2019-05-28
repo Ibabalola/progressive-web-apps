@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.dev.js",
-    "prebuild": "webpack --mode production --config webpack.prod.js",
-    "start": "webpack-dev-server --mode development --config webpack.dev.js --open --hot --histroy-api-fallback --env.PLATFORM=local --env.VERSION=stag"
+    "build": "webpack --mode development --config webpack.base.js --env.PLATFORM=development --env.VERSION=stag --progress",
+    "prebuild": "webpack --mode production --config webpack.prod.js --env.PLATFORM=production --env.VERSION=stag --progress",
+    "debug": "webpack-dev-server --mode development --config webpack.base.js --open --hot --histroy-api-fallback --env.PLATFORM=local --env.VERSION=stag",
+    "start": "webpack-dev-server --mode production --config webpack.prod.js --open --hot --histroy-api-fallback --env.PLATFORM=production --env.VERSION=stag"
   },
   "keywords": [],
   "author": "",
