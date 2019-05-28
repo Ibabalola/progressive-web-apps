@@ -1,7 +1,26 @@
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const commons = require('./webpack.common');
 
-module.exports = merge(common, {
-    mode: 'production',
-    devtool: 'source-map'
-});
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const productionConfiguration = function (env) {
+    return {
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        mangle: {
+                            keep_fnames: true,
+                        },
+                    },
+                })
+            ],
+        },
+        plugins: [
+            new OptimizeCssAssetsPlugin(),
+        ]
+    };
+};
+
+module.exports = merge(commons, productionConfiguration);
