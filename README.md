@@ -1,5 +1,10 @@
-Service Workers
+Progressive Web Apps
 =======
+
+# Service Workers
+
+What is a service worker?
+A service worker is a type of web worker. It's essentially a JavaScript file that runs separately from the main browser thread, intercepting network requests, caching or retrieving resources from the cache, and delivering push messages
 
 ## Getting started
 
@@ -7,6 +12,4 @@ This repo will be used to better understand the workings and use cases for servi
 
 ## References
  
-[Webpack 4 React App](https://medium.freecodecamp.org/how-to-conquer-webpack-4-and-build-a-sweet-react-app-236d721e6745)
-
-[Webpack 4 React App Updated](https://medium.freecodecamp.org/how-to-combine-webpack-4-and-babel-7-to-create-a-fantastic-react-app-845797e036ff)
+[Introduction To Service Worker](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker)
