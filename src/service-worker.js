@@ -1,23 +1,50 @@
 // default cache
 const cacheName = 'v1';
 const cacheFiles = [
-    './',
-    './index.html',
-    './styles.css',
-    './images/background.jpg'
+    '../dist/',
+    '../dist/styles.css',
+    '../dist/index.html',
+    '../dist/app.bundle.js'
 ];
 
 // install event
-self.addEventListener('install', function(event) {
-   console.log('[ServiceWorker] Installed');
+self.addEventListener('install', e => {
+    console.log('[ServiceWorker] Installed');
+
+    e.waitUntil(caches.open(cacheName)
+        .then(cache => {
+            console.log('[ServiceWorker] Caching cacheFiles');
+            return cache.addAll(cacheFiles);
+        }));
 });
 
 // activate event
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', e => {
     console.log('[ServiceWorker] Activated');
+
+    e.waitUntil(caches.keys()
+        .then(cacheNames => {
+            return Promise.all(cacheNames.map(thisCacheName => {
+                if (thisCacheName !== cacheName) {
+                    console.log('[Service Worker] Removing Cached Files from ', thisCacheName);
+                    return caches.delete(thisCacheName);
+                }
+            }))
+        }))
 });
 
 // fetch event
-self.addEventListener('fetching', function(event) {
-    console.log('[ServiceWorker] Fetching', event.request.url);
+self.addEventListener('fetch', e => {
+
+    console.log('[ServiceWorker] Fetch');
+    console.log('[ServiceWorker] Fetch', e.request.url);
+
+    e.respondWith(caches.match(e.request).then(function(response) {
+        if (response) {
+             console.log('[ServiceWorker] Found in cache', e.request,url);
+             return response;
+        }
+
+        return fetch(e.request);
+    }))
 });

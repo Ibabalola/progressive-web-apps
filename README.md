@@ -15,6 +15,9 @@ This repo will be used to better understand the workings and use cases for servi
 ## References
  
 [Introduction To Service Worker](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker)
+
 [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+
 [Chrome: Service Worker Internals](chrome://serviceworker-internals/)
+
 [Can I Use - Service](https://caniuse.com/#search=Service)
