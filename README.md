@@ -1,10 +1,29 @@
 Progressive Web Apps
 =======
 
+- Use modern web APIs along with traditional progressive enhancement strategy to create cross-platform web applications.
+- Work everywhere and provide several features that give them the same user experience advantages as native apps.
+
+PWA should be: 
+- Installable
+- Linkable
+- Network Independent
+- Progressive
+- Re-engageable
+- Responsive
+- Safe  
+
+# Web App Manifest
+
+
 # Service Workers
 
 What is a service worker?
 A service worker is a type of web worker. It's essentially a JavaScript file that runs separately from the main browser thread, intercepting network requests, caching or retrieving resources from the cache, and delivering push messages
+
+Inspect Service Workers
+
+chrome://inspect/#service-workers
 
 ## Getting started
 

@@ -1,21 +1,28 @@
 // default cache
-const cacheName = 'v1';
+const cacheName = 'v2';
 const cacheFiles = [
-    '../dist/',
-    '../dist/styles.css',
-    '../dist/index.html',
-    '../dist/app.bundle.js'
+    '/dist/',
+    '/dist/styles.css',
+    '/dist/index.html',
+    '/dist/app.bundle.js',
+    '/dist/images/background.jpg'
 ];
 
 // install event
 self.addEventListener('install', e => {
     console.log('[ServiceWorker] Installed');
 
-    e.waitUntil(caches.open(cacheName)
+    e.waitUntil(
+        caches.open(cacheName)
         .then(cache => {
             console.log('[ServiceWorker] Caching cacheFiles');
             return cache.addAll(cacheFiles);
-        }));
+        })
+        .catch(e => {
+            console.log(e.message);
+            console.log(e.stackTrace);
+        })
+    );
 });
 
 // activate event

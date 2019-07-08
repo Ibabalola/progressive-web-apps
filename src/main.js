@@ -1,3 +1,6 @@
+import registerServiceWorker from './registerServiceWorker';
+
+// styles
 import './styles.scss';
 
 export default class Main {
@@ -13,37 +16,14 @@ export default class Main {
      */
 	initialise()
 	{
-		this._registerServiceWorker();
-
 		this._get('https://api.nasa.gov/planetary/apod?api_key=fY55wHwziYqP2wlbJYyrnJ3uRypjp3eBaP85TZhh')
 			.then(response => {
-				console.log("Success", response);
+				console.log("[Main.js] Success", response);
 				document.getElementsByClassName('app-header')[0].src = response.url;
 			})
             .catch(err => {
                 console.log("Error", err);
             })
-	}
-
-    /**
-	 * Register the service worker
-     * @private
-     */
-	_registerServiceWorker()
-	{
-        console.log('Registering Service Worker');
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('./src/service-worker.js').then(function(registration) {
-                    // Registration was successful
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
-                    // registration failed :(
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
 	}
 
     /**
@@ -73,6 +53,9 @@ export default class Main {
 	   });
 	}
 }
+
+// register the service worker
+registerServiceWorker();
 
 const main = new Main();
 main.initialise();
